@@ -6,10 +6,9 @@
         <h1 class="title">Snappy Labs</h1>
         </div>
     </nav>
-    <container v-on:sent="team2" />
+    <container @submit="addTeam(test)" /> <!-- esto deberia recibir lo del emit pero no -->
   </div>
 </template>
-
 <script>
 import Container from './components/container.vue'
 
@@ -19,17 +18,24 @@ export default {
   components: {
     Container,
   },
-   data() {
+   data(){
     return {
       team2:'',
       }
     },
     methods: {
- 
-        addTeam(team2){
+        // con esta funcion deberia agarrar los datos que emitio el submit y meterlos en el json para que despues
+        // el child los meta en una fila nueva
+        addTeam:function(test){
           console.log('recieved:  ')
-          console.log(team2);
+          console.log(test)
+          
           //this.team = [...this.team, newTeam];
+        },
+        //esta funcion sobreescribe el 'nombre' del objeto. el lapicito llama a una funcion que le pasa los datos a esta. 
+        //Primero tengo que hacer andar el emit
+        editTeam(){
+
         }
       },
 }
